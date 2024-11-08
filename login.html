@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - E-Library</title>
+ 
+    <style>
+        body {
+           
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-image: url('6a71c060-2c7a-4c13-9a28-a7224a08663c.jpeg'); /* قم بتحديد مسار الصورة هنا */
+            background-size: cover; /* يجعل الصورة تغطي كامل الحاوية */
+            background-position: center; /* يضمن أن الصورة تتمركز */
+            background-repeat: no-repeat; /* يمنع تكرار الصورة */
+            flex-direction: column;
+            height: 100vh;
+        }
+h1 {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+form{
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 0 auto;
+    max-height: 500px;
+        }
+.login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            height: 600px;
+           margin-top: 20px;
+        }
+
+.login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+.login-container input {
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+.login-container button {
+            padding: 12px;
+            background-color: #22b929;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+.login-container button:hover {
+    background-color: #044d07;
+        }
+
+.login-container .forgot-password {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+.login-container .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+.login-container .register-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+.login-container .register-link:hover {
+            text-decoration: underline;
+        }
+
+footer {
+            text-align: center;
+            font-size: 14px;
+            color: #fdfbfb;
+            padding: 10px 0; /* إضافة مساحة من الأعلى والأسفل للـ footer */
+            font-weight: bold;
+          -webkit-background-clip: text;
+            background-clip: text;
+        }
+main {
+            flex: 1; /* يضمن أن المحتوى الرئيسي يأخذ المساحة المتاحة */
+        }
+.logo {
+    width: 300px;
+    height: 100px;
+    object-fit: contain;
+}
+.signin{
+font-size: 30px;
+font-style:normal;
+}
+
+
+    </style>
+   <script>
+    // تسجيل الدخول باستخدام البريد الإلكتروني
+    function login() {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const errorMessage = document.getElementById("error-message");
+
+        // استرجاع الحسابات من التخزين المحلي
+        const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+        // التحقق من وجود الحساب في القائمة
+        const account = accounts.find(acc => acc.email === email && acc.password === password);
+
+        if (account) {
+            localStorage.setItem("loggedIn", "true");
+            localStorage.setItem("currentUser", email);  // تخزين البريد الإلكتروني للمستخدم الحالي
+            window.location.href = "index.html";  // إعادة التوجيه إلى الصفحة الرئيسية بعد تسجيل الدخول بنجاح
+        } else {
+            errorMessage.style.display = "block";  // عرض رسالة الخطأ عند الفشل
+        }
+    }
+</script>
+</head>
+<body>
+    <h1> Black feather </h1>
+    
+    <div class="login-container">
+       <div class="signin" >SIGN IN</div>
+        <img src= "avatar-icon-profile-icon-member-login-isolated-vector.jpg" alt="لوجو التسجيل" class="logo">
+        <!-- رسالة الخطأ -->
+        <p id="error-message" class="error-message" style="color:red; display:none;">Incorrect email or password. Please try again.</p>
+
+        <!-- نموذج تسجيل الدخول -->
+        <form onsubmit="event.preventDefault(); login();">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- رابط نسيت كلمة المرور -->
+        <a href="forgot-password.html" class="forgot-password">Forgot your password?</a>
+
+        <!-- رابط إنشاء حساب جديد -->
+        <p>Don't have an account? <a href="register.html" class="register-link">Create one</a></p>
+    </div>
+    
+  
+    <footer>&copy; 2024 E-Library | All Rights Reserved</footer>
+</body>
+</html>

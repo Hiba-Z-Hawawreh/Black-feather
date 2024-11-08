@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - E-Library</title>
+    <style> 
+    body {
+   
+    margin: 0;
+    background-image: url('52e70522-8f73-46d4-a22c-112a0f558a4c (1).jpeg'); /* قم بتحديد مسار الصورة هنا */
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* هذا السطر يثبت الصورة الخلفية */
+    height: 100vh; /* لتغطية الشاشة بالكامل */
+    display: flex;
+    flex-direction: column;
+}
+
+    header {
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        z-index: 1;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+        margin-top: 15px;
+
+    }
+
+    header nav {
+        margin-top: 40px;
+    
+    }
+
+    header nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+    }
+
+    header nav ul li {
+        margin: 0 15px;
+    }
+
+    header nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    header nav ul li a:hover {
+        text-decoration: underline;
+        color: #2c8f42;
+    }
+
+   
+
+    main {
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        max-width: 500px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        margin: 50px auto;
+        color: #fff;
+    }
+
+    main h2 {
+        font-size: 1.5em;
+        margin: 10px 0;
+    
+    }
+
+    main p {
+        font-size: 1.2em;
+    }
+
+    main a {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+    }
+
+    main a:hover {
+        background-color: #061e38;
+    }
+   main button{
+        padding: 10px 20px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        background-color: #60e27e;
+   } 
+   main button:hover{
+    background-color: #2c8f42;
+   }
+
+    .search-container {
+        margin-top: 30px;
+    }
+
+    .search-container input[type="text"] {
+        width: 80%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+
+    .search-container button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+
+    .search-container button:hover {
+        background-color: #218838;
+    }
+
+    footer {
+        text-align: center;
+        font-size:16px;
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+        font-weight: bold;
+    
+    }
+input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+
+.results {
+            margin-top: 20px;
+        }
+
+           /* النمط للقسم ليبدو كزر */
+           .comments-section {
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #60e27e;
+    width: 300px;
+    height: 35px;
+    display: flex; /* استخدام Flexbox */
+    justify-content: center; /* لتوسيط النص أفقيًا */
+    align-items: center; /* لتوسيط النص عموديًا */
+}
+
+.comments-section p {
+    font-size: 20px;
+    margin: 0; /* إزالة الهوامش الافتراضية من الـ p لضمان المحاذاة المثلى */
+    text-align: center;
+}
+
+
+        /* نافذة منبثقة */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.5); 
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: rgb(8, 8, 8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+        }
+
+        .modal-content textarea {
+    width: 80%; /* لجعل textarea أكبر قليلاً */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #0ba7e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+        .modal-content button:hover {
+            background-color: #2f0770;
+        }
+
+    </style>
+    <script>
+
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const loggedIn = localStorage.getItem("loggedIn");
+            
+            if (!loggedIn) {
+                window.location.href = "login.html";
+            } else {
+                const username = localStorage.getItem("username") || "Guest";
+                const welcomeMessage = document.querySelector(".welcome-message");
+                welcomeMessage.textContent = `مرحبًا ${username}! سعيدون بعودتك.`;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            window.location.href = "login.html";
+        }
+
+        function submitComment() {
+            const commentInput = document.querySelector("#comment-text");
+            const commentValue = commentInput.value.trim();
+
+            if (commentValue) {
+                alert("Your comment has been sent successfully:" + commentValue);
+                commentInput.value = "";  
+                alert("Please enter a comment before submitting.");
+            }
+        }
+
+ // دالة البحث عن كتاب
+ function searchBook() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const allBooks = [
+                { title: "الجريمة والعقاب", link:"الجريمة والعقاب 12000.Foulabook.com.1523626339.pdf"  },
+                { title: "آرسس", link: "آرسس_51032_Foulabook.com_.pdf" },
+                { title: "اكستاسي", link:"اكستاسي_66685_Foulabook.com_.pdf" },
+                { title: "أحببت وغدا", link: "أحببت وغدا_68972_Foulabook.com_.pdf" },
+                { title: "قلبك يوجعنى", link: "noor-book.com/debma2" },
+                { title: "ارض زيكولا", link:"أرض زيكولا_23757_Foulabook.com_.pdf"  },
+                { title: "ما لا نبوح به",link:"ما لا نبوح به_46369_Foulabook.com_.pdf" },
+                { title: "ملائك نصيبين", link: "ملائك نصيبين_66719_Foulabook.com_.pdf" },
+                { title: "ابتسم فأنت ميت", link: "ابتسم فأنت ميت_Foulabook.com_.pdf" },
+                { title: "رسائل الى ميلينا", link:  "رسائل إلى ميلينا_Foulabook.com_"},
+                { title: "فاتتني صلاة", link: "فاتتني صلاة_86475_Foulabook.com_.pdf" },
+                { title: "الجزار", link:"الجزار_Foulabook.com_.pdf" },
+                { title:"في حضرة الجان", link: "في حضرة الجان_Foulabook.com_.pdf" },
+                { title: "لعبة العروش - أغنية الجليد والنار", link:"لعبة العروش - أغنية الجليد والنار 1_12289_Foulabook.com_.pdf" },
+                { title: "فتاة الياقة الزرقاء ", link: "فتاة الياقة الزرقاء_71289_Foulabook.com_.pdf" },
+                { title: "إلى ما لا نهاية", link: "إلى ما لا نهاية_36242_Foulabook.com_.pdf"},
+                { title: " 1919 ", link:"73729.Foulabook.com.2018-01-20.1516467682"},
+                { title:"أبي الذي أكره", link: "أبي الذي أكره_25826_Foulabook.com_.pdf" },
+                { title: " باريس لا تعرف الحب " ,link:"باريس لا تعرف الحب_35196_Foulabook.com_.pdf" },
+                { title: "جرعة نيكوتين ", link: "جرعة نيكوتين_85753_Foulabook.com_.pdf" },
+                { title: "الحب تحت المطر", link:"36782.Foulabook.com.2018-01-14.1515912921" },
+                { title: "رسالة في توقيت حرج ", link:"67353.Foulabook.com.2018-01-28.1517135962" },
+                { title:"إسرائيل النازية ولغة المحرقة", link:  "إسرائيل النازية ولغة المحرقة4290.Foulabook.com.1522083847.pdf"},
+                { title:" كأولين ", link:"كأولين_63990_Foulabook.com_.pdf"  },
+                { title: "إيرينديرا البريئة", link:"إيرينديرا البريئة8331.Foulabook.com.1522075998.pdf" },
+                { title: "الحب في زمن الكوليرا", link:"الحب في زمن الكوليرا3911.Foulabook.com.1521822493.pdf" },
+                { title:"أرصفة متسرعة", link: "أرصفة متسرعة_46173_Foulabook.com_.pdf" },
+                { title:"أنا عشقت ", link:"14800.Foulabook.com.2018-03-04.1520181969"},
+                { title: "ليالى الحب والرعب  " , link: "ليالى الحب والرعب3169.Foulabook.com.1521824585.pdf" },
+                { title: "ليلة خمر, من حياتي ", link: "ليلة خمر, من حياتي_Foulabook.com_.pdf" },
+                { title: "المقامر ", link: "المقامر3542.Foulabook.com.1523878202.pdf"},
+                { title: "أحبك وكفى", link:"16908.Foulabook.com.2018-03-06.1520362197" },
+                { title:"أصوات مراكش ", link: "أصوات مراكش_38446_Foulabook.com_.pdf" },
+                { title:"انكسار الروح", link: "15938.Foulabook.com.2018-03-04.1520183840"},
+                { title: "سنترال بارك ", link: "سنترال بارك_Foulabook.com_.pdf"},
+                { title: "اثنتا عشرة قصة قصيرة مهاجرة", link:"اثنتا عشرة قصة قصيرة مهاجرة3722.Foulabook.com.1522077315.pdf" },
+                { title:"القهوة السوداء", link: "القهوة السوداء_Foulabook.com_.pdf" },
+                { title:"لا تعتذر عما فعلت ", link:"26409.Foulabook.com.2018-03-03.1520108233"},
+                { title: "شغفها حباً", link: "75809.Foulabook.com.2018-03-06.1520362420" },
+                { title: "أحجار على رقعة الشطرنج", link: "أحجار على رقعة شطرنج_30883_Foulabook.com_.pdf" },
+                { title: "آسف لم أعد أستطيع ", link:"17434.Foulabook.com.2018-02-11.1518367683"},
+                { title: "شفتاه ", link: "70493.Foulabook.com.2018-02-11.1518368312" },
+                { title:"شرفة الهاوية", link:"38663.Foulabook.com.2018-01-28.1517155731" },
+                { title: "أوراق البنفسج", link:"أوراق البنفسج_Foulabook.com_.pdf"  },
+                { title: "أنا الموقع أدناه", link: "40853.Foulabook.com.2018-03-03.1520119779" },
+                { title: "الشيء", link: "الشيء_79318_Foulabook.com_.pdf" },
+                { title:"رجل تحت الصفر", link: "رجل تحت الصفر3762.Foulabook.com.1522088833.pdf" },
+                { title: "ومضات في الخيال العلمي والغرائبيات", link: "ومضات في الخيال العلمي والغرائبيات 6_16122_Foulabook.com_.pdf" },
+               
+            ];
+
+            const results = allBooks.filter(book => book.title.toLowerCase().includes(searchTerm));
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            if (results.length > 0) {
+                results.forEach(book => {
+                    const resultLink = document.createElement('a');
+                    resultLink.href = book.link;
+                    resultLink.textContent = book.title;
+                    resultLink.style.display = 'block';
+                    resultsDiv.appendChild(resultLink);
+                });
+            } else {
+                resultsDiv.textContent = 'No books found.';
+            }
+        }
+         // فتح النافذة المنبثقة
+         function openModal() {
+            document.getElementById('commentModal').style.display = 'flex';
+        }
+
+        // إغلاق النافذة المنبثقة وإظهار الرسالة
+        function submitComment() {
+            let commentText = document.getElementById('comment-text').value;
+            if (commentText) {
+                alert("Your comment: " + commentText);
+                document.getElementById('comment-text').value = ''; // مسح النص
+                document.getElementById('commentModal').style.display = 'none'; // إغلاق النافذة
+            } else {
+                alert("Please enter a comment!");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Black feather</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Available books</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <h2>Find yourself in a book</h2>
+        <p>Sometimes there are secrets hidden between the pages of books
+            It would be better if you didn't discover them.</p>
+
+        <p>Search for a book</p>
+        <input type="text" id="searchInput" placeholder="Enter book name">
+        <button onclick="searchBook()">Search</button>
+
+        <div class="results" id="results"></div>
+        <!-- مكان البحث عن الكتب -->
+    
+    <!-- القسم الذي يعمل كزر -->
+    <div class="comments-section" onclick="openModal()">
+        <p>Leave your comment<p>
+    </div>
+
+    <!-- نافذة منبثقة -->
+    <div id="commentModal" class="modal">
+        <div class="modal-content">
+            <h3>Write your comment</h3>
+            <textarea id="comment-text" rows="4" placeholder="Enter your comment here"></textarea>
+            <button type="button" onclick="submitComment()">Send Comment</button>
+        </div>
+    </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 E-Library | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

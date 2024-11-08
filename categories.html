@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - E-Library</title>
+    
+    <style>
+       
+        header {
+            padding: 20px;
+            text-align: center;
+            background-image: url('bebb8358-1627-4a92-ada9-0ea47c2f22ee.jpeg'); /* قم بتحديد مسار الصورة هنا */
+        
+        }
+
+        header h1 {
+            color: #faf9f9;
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header nav ul {
+            color: #fcfafa;
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 0;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: #fdfcfc;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+            color: #2c8f42;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* ثلاث أعمدة متساوية */
+            gap: 10px;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .grid-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .grid-item img {
+            max-width: 95%;
+            height: 500px;
+            border-bottom: 1px solid #ddd;
+            border-radius: 15px;
+        }
+
+        .grid-item a {
+            text-decoration: none;
+            color: #007BFF;
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .grid-item a:hover {
+            text-decoration: underline;
+        }
+
+        .grid-item p{
+    font-family: 'Verdana', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #faf8f8;
+    text-shadow: 1px 1px 2px rgba(7, 7, 7, 0.9);
+    cursor: pointer;
+    border: none;
+        }
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        // إضافة زر لتسجيل الخروج
+        function logout() {
+            localStorage.removeItem("loggedIn");  // إزالة حالة تسجيل الدخول
+            window.location.href = "login.html";  // إعادة التوجيه إلى صفحة تسجيل الدخول
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Black feather</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Available books</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li> 
+            </ul>
+        </nav>
+
+    <main>
+        
+        <div class="grid-container">
+          
+            <div class="grid-item" id="1">
+                <p>الجريمة والعقاب </p>
+                <img src="16455.2018-04-13.1523626338.png" alt="Category Name">
+                <a href="الجريمة والعقاب 12000.Foulabook.com.1523626339.pdf">link</a>
+            </div>
+            <div class="grid-item" id="2">
+                <p> آرسس </p>
+                <img src="ارسس-احمد-ال-حمدان-pdf-.jpg" alt="Category Name">
+                <a href="آرسس_51032_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item"id="3" >
+                <p> اكستاسي</p>
+                <img src="images (4).jpg" alt="Category Name">
+                <a href="اكستاسي_66685_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="4">
+                <p>أحببت وغدا </p>
+                <img src="43477470.jpg" alt="Category Name">
+                <a href="أحببت وغدا_68972_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item"id="5" >
+                <p>قلبك يوجعنى</p>
+                <img src="57142.2018-09-13.1536839419.jpg" alt="Category Name">
+                <a href="noor-book.com/debma2">link</a>م
+            </div>
+            <div class="grid-item"id="6" >
+                <p>ارض زيكولا</p>
+                <img src="be269f778b0c1260f2c04204487cdb60.jpg" alt="Category Name">
+                <a href="أرض زيكولا_23757_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item"id="7" >
+            <P> ما لا نبوح به</P>
+                <img src="images.jpg" alt="Category Name">
+                <a href="ما لا نبوح به_46369_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item"id="8" >
+                <p> ملائك نصيبين</p>
+                <img src="images (3).jpg" alt="Category Name">
+                <a href="ملائك نصيبين_66719_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="9">
+                <p>ابتسم فأنت ميت</p>
+                <img src="8565ebf5-3ea3-4eae-80f2-74a268afc0a3.png" alt="Category Name">
+                <a href="ابتسم فأنت ميت_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="10" >
+                <p>رسائل الى ميلينا</p>
+                <img src="96c41722-7ae1-4dc1-ad89-773b2e0739cc.webp" alt="Category Name">
+                <a href="رسائل إلى ميلينا_Foulabook.com_">link </a>
+            </div>
+            <div class="grid-item"id="11" >
+                <p> فاتتني صلاة</p>
+                <img src="images (1).jpg" alt="Category Name">
+                <a href="فاتتني صلاة_86475_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item"id="12" >
+                <p>الجزار</p>
+                <img src="images (5).jpg" alt="Category Name">
+                <a href="الجزار_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="13">
+                <p > في حضرة الجان</p>
+                <img src="63333.2018-10-05.1538766138.jpg" alt="Category Name">
+                <a href="في حضرة الجان_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="14">
+                <p> لعبة العروش - أغنية الجليد والنار</p>
+                <img src="43928.2019-08-13.1565726757.png" alt="Category Name">
+                <a href="لعبة العروش - أغنية الجليد والنار 1_12289_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="15">
+                <p> فتاة الياقة الزرقاء </p>
+                <img src="71676.2021-07-23.1627069142.jpg" alt="Category Name">
+                <a href="فتاة الياقة الزرقاء_71289_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item"id="16" >
+                <p> إلى ما لا نهاية</p>
+                <img src="67108.2020-05-14.1589422069.jpg" alt="Category Name">
+                <a href="إلى ما لا نهاية_36242_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="17">
+                <p> 1919 </p>
+                <img src="80514.2018-01-20.1516467682.jpg" alt="Category Name">
+                <a href="73729.Foulabook.com.2018-01-20.1516467682">link</a>
+            </div>
+            <div class="grid-item" id="18" >
+                <P>أبي الذي أكره</P>
+                <img src="91695.2021-06-05.1622911673.png" alt="">
+                <a href="أبي الذي أكره_25826_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="19" >
+                <P> باريس لا تعرف الحب </P>
+                <img src="64156.2019-10-24.1571929261.jpg" alt="Category Name">
+                <a href="باريس لا تعرف الحب_35196_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item"id="20" >
+            <P >  جرعة نيكوتين </P>
+                <img src="39529.2019-10-24.1571929135.png" alt="Category Name">
+                <a href="جرعة نيكوتين_85753_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="21">
+                <P> الحب تحت المطر</P>
+                <img src="99645.2018-01-14.1515912921.png" alt="Category Name">
+                <a href="36782.Foulabook.com.2018-01-14.1515912921">link</a>
+            </div>
+            <div class="grid-item" id="22" >
+                <P> رسالة في توقيت حرج </P>
+                <img src="99236.2018-01-28.1517135962.jpg" alt="Category Name">
+                <a href="67353.Foulabook.com.2018-01-28.1517135962">link</a>
+            </div>
+            <div class="grid-item" id="23">
+                <P> إسرائيل النازية ولغة المحرقة</P>
+                <img src="17267.2018-03-26.1522083847.jpg" alt="Category Name">
+                <a href="إسرائيل النازية ولغة المحرقة4290.Foulabook.com.1522083847.pdf">link</a>
+            </div>
+            <div class="grid-item" id="24" >
+                <P> كأولين </P>
+                <img src="94967.2020-09-06.1599352864.png" alt="Category Name">
+                <a href="كأولين_63990_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="25">
+                <P>إيرينديرا البريئة</P>
+                <img src="24698.2018-03-26.1522075996.jpg" alt="Category Name">
+                <a href="إيرينديرا البريئة8331.Foulabook.com.1522075998.pdf">link</a>
+            </div>
+            <div class="grid-item"id="26" >
+                <P> الحب في زمن الكوليرا</P>
+                <img src="51357.2018-03-23.1521822493.jpg" alt="Category Name">
+                <a href="الحب في زمن الكوليرا3911.Foulabook.com.1521822493.pdf">link</a>
+            </div>
+            <div class="grid-item" id="27" >
+                <P>أرصفة متسرعة</P>
+                <img src="63891.2024-09-03.1725388800.jpg" alt="Category Name">
+                <a href="أرصفة متسرعة_46173_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item"id="28"  >
+                <P> أنا عشقت </P>
+                <img src="57856.2018-03-04.1520181969.png" alt="Category Name">
+                <a href="14800.Foulabook.com.2018-03-04.1520181969">link</a>
+            </div>
+            <div class="grid-item"id="29" >
+                <P>ليالى الحب والرعب   </P>
+                <img src="64706.2018-03-23.1521824585.jpg" alt="Category Name">
+                <a href="ليالى الحب والرعب3169.Foulabook.com.1521824585.pdf">link</a>
+            </div>
+            <div class="grid-item" id="30" >
+                <P> ليلة خمر, من حياتي </P>
+                <img src="78801.2022-10-04.1664841926.png" alt="Category Name">
+                <a href="ليلة خمر, من حياتي_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="31" >
+                <P> المقامر </P>
+                <img src="51636.2018-04-16.1523878202.jpg" alt="Category Name">
+                <a href="المقامر3542.Foulabook.com.1523878202.pdf">link</a>
+            </div>
+            <div class="grid-item"id="32"  >
+                <P> أحبك وكفى</P>
+                <img src="44151.2018-03-06.1520362197.png" alt="Category Name">
+                <a href="16908.Foulabook.com.2018-03-06.1520362197">link</a>
+            </div>
+            <div class="grid-item"id="33"  >
+            <p> أصوات مراكش  </p>
+                <img src="81590.2019-10-06.1570398357.jpg" alt="Category Name">
+                <a href="أصوات مراكش_38446_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="34" >
+                <P> انكسار الروح</P>
+                <img src="24119.2018-03-04.1520183840.jpg" alt="Category Name">
+                <a href="15938.Foulabook.com.2018-03-04.1520183840">link</a>
+            </div>
+            <div class="grid-item" id="35" >
+                <P> سنترال بارك </P>
+                <img src="65734.2018-10-01.1538418452.jpg" alt="Category Name">
+                <a href="سنترال بارك_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="36" >
+              <P>   اثنتا عشرة قصة قصيرة مهاجرة</P>
+                <img src="88646.2018-03-26.1522077315.jpg" alt="Category Name">
+                <a href="اثنتا عشرة قصة قصيرة مهاجرة3722.Foulabook.com.1522077315.pdf">link</a>
+            </div>
+            <div class="grid-item"  id="37">
+                <P> القهوة السوداء</P>
+                <img src="12904.2018-09-17.1537188452.jpg" alt="Category Name">
+                <a href="القهوة السوداء_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="38"  >
+                <P> لا تعتذر عما فعلت </P>
+                <img src="28386.2018-03-03.1520108233.jpg" alt="Category Name">
+                <a href="26409.Foulabook.com.2018-03-03.1520108233">link</a>
+            </div>
+            <div class="grid-item" id="39" >
+                <P> شغفها حباً</P>
+                <img src="54662.2018-03-06.1520362420.jpg" alt="Category Name">
+                <a href="75809.Foulabook.com.2018-03-06.1520362420">link</a>
+            </div>
+            <div class="grid-item" id="40" >
+                <P> أحجار على رقعة الشطرنج</P>
+                <img src="20373.2018-09-11.1536703881.jpg" alt="Category Name">
+                <a href="أحجار على رقعة شطرنج_30883_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item"id="41" >
+                <P>آسف لم أعد أستطيع</P>
+                <img src="83000.2018-02-11.1518367683.png" alt="Category Name">
+                <a href="17434.Foulabook.com.2018-02-11.1518367683">link</a>
+            </div>
+            <div class="grid-item" id="42" >
+               <P>   شفتاه  </P>
+                <img src="95541.2018-02-11.1518368312.png" alt="Category Name">
+                <a href="70493.Foulabook.com.2018-02-11.1518368312">link</a>
+            </div>
+            <div class="grid-item" id="43" >
+                <P> شرفة الهاوية</P>
+                <img src="46846.2018-01-28.1517155731.jpg" alt="Category Name">
+                <a href="38663.Foulabook.com.2018-01-28.1517155731">link</a>
+            </div>
+            <div class="grid-item" id="44" >
+                <P> أوراق البنفسج</P>
+                <img src="33578.2018-12-19.1545215992.jpg" alt="Category Name">
+                <a href="أوراق البنفسج_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="45" >
+                 <P> أنا الموقع أدناه</P>
+                <img src="91266.2018-03-03.1520119779.jpg" alt="Category Name">
+                <a href="40853.Foulabook.com.2018-03-03.1520119779">link</a>
+            </div>
+            <div class="grid-item"  id="46">
+                <P> الشيء</P>
+                <img src="58677.2020-12-30.1609365418.png" alt="Category Name">
+                <a href="الشيء_79318_Foulabook.com_.pdf">link</a>
+            </div>
+            <div class="grid-item" id="47" >
+             <P> رجل تحت الصفر</P>
+                <img src="83071.2018-03-26.1522088832.jpg" alt="Category Name">
+                <a href="رجل تحت الصفر3762.Foulabook.com.1522088833.pdf">link</a>
+            </div>
+            <div class="grid-item" id="48" >
+             <P>   ومضات في الخيال العلمي والغرائبيات</P>
+                <img src="39483.2020-09-28.1601323388.jpg" alt="Category Name">
+                <a href="ومضات في الخيال العلمي والغرائبيات 6_16122_Foulabook.com_.pdf">link</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 E-Library | All Rights Reserved</p>
+    </footer>
+</header>
+</body>
+</html>
